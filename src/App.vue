@@ -62,31 +62,64 @@
         </SwiperSlide>
       </Swiper>
     </section>
-    <section class="w-full h-[100vh] grid">
-      <div class=" col-start-1 col-end-1 row-start-1 row-end-1">
-        <img src="./assets/Logo.svg" alt="">
+    <section class="w-full h-[100vh] flex flex-wrap items-center p-[100px] relative ">
+      <div class=" col-start-1 col-end-1 row-start-1 row-end-1 w-[30%] border-[1px] p-[50px] skew-y-[10deg] h-[44%] bg-gray-300">
+        <img src="./assets/Logo.svg" alt="" class="w-[50%] mx-auto">
       </div>
-      <div class=" col-start-2 col-end-3">
-        <h1>About Me</h1>
+      <div class=" col-start-2 col-end-3 w-[70%] border-[1px] p-[55px] skew-y-[-4deg] h-[44%] shadow-2xl bg-white">
+        <h1 class="text-5xl font-bold">About Me</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est itaque repudiandae unde rem ratione obcaecati
           voluptatum impedit necessitatibus, optio nihil asperiores, natus, doloribus quo expedita cum recusandae
           deserunt perspiciatis eaque.</p>
       </div>
-      <div>
-        <h1>I Can</h1>
+      <div class="w-[70%] border-[1px] p-[65px] skew-y-[4deg] bg-gray-300 h-[44%]">
+        <h1 class="text-5xl font-bold">I Can</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti deserunt maiores optio magni, perferendis
           iure sunt? Ad, fuga consectetur mollitia iusto omnis neque delectus sint, eum pariatur, vero nihil iure.</p>
       </div>
-      <div>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
+      <div class=" bg-white w-[30%] border-[1px] p-[10px] flex flex-wrap justify-around items-center h-[44%] transform skew-y-[-10deg] shadow-2xl">
+        <i class="fas fa-brands fa-sass text-3xl"></i>
+        <i class="fas fa-brands fa-sass text-3xl"></i>
+        <i class="fas fa-brands fa-sass text-3xl"></i>
+        <i class="fas fa-brands fa-sass text-3xl"></i>
+        <i class="fas fa-brands fa-sass text-3xl"></i>
+        <i class="fas fa-brands fa-sass text-3xl"></i>
       </div>
+      <span class=" absolute border-[1px] h-[100px] w-[1000px] top-0 left-0 z-[-100]"></span>
+      <span class=" absolute border-[1px] h-[500px] w-[100px] bottom-0 left-0 z-[-100]"></span>
+      <span class=" absolute border-[1px] h-[500px] w-[100px] top-0 right-0 z-[-100]"></span>
+      <span class=" absolute border-[1px] h-[100px] w-[1000px] bottom-0 right-0 z-[-100]"></span>
+    </section>
+    <section class="w-full h-[100vh] flex flex-wrap items-center p-[100px]">
+      <h1 class="text-5xl font-bold text-center w-full">Contact</h1>
+      <form action="" class="grid w-[50%] mx-auto gap-[10px]">
+        <input type="text" placeholder="Name" class=" col-start-1 col-end-1 row-start-1 row-end-1 p-[10px] border-[1px]">
+        <input type="email" placeholder="Email" class=" p-[10px] border-[1px] col-start-1 col-end-1 row-start-2 row-end-2">
+        <textarea name="" id="" cols="30" rows="10" placeholder="Message"
+          class=" p-[10px] border-[1px] col-start-2 col-end-2 row-start-1 row-end-3"></textarea>
+        <button class="w-[100%] p-[10px] bg-black text-white col-start-1 col-end-3 mx-auto hover:bg-white hover:text-black border-[1px] duration-700">Send</button>
+      </form>
     </section>
   </main>
+  <footer class="w-full bg-black text-white text-center p-[100px] flex flex-wrap items-center gap-[50px] relative">
+    <h1 class="text-5xl font-bold w-full">Thank You</h1>
+    <ul class="flex flex-wrap gap-[10px] list-none items-center text-center w-full justify-center">
+      <li class="text-3xl"><a href=""><i class="fas fa-brands fa-instagram"></i>Instagram</a></li>
+      <li class="text-3xl"><a href=""><i class="fas fa-brands fa-github"></i>Github</a></li>
+    </ul>
+    <span class="absolute w-[1000px] h-[50px] bg-white top-0 left-0"></span>
+    <span class="absolute w-[1000px] h-[50px] bg-white bottom-0 right-0"></span>
+    <i class="fas fa-star text-2xl absolute right-[10px]"></i>
+    <i class="fas fa-star text-3xl absolute right-[50px] top-[100px]"></i>
+    <i class="fas fa-star text-4xl absolute right-[80px] top-[50px]"></i>
+    <i class="fas fa-star text-2xl absolute right-[150px]"></i>
+    <i class="fas fa-star text-3xl absolute right-[120px] top-[100px]"></i>
+    <i class="fas fa-star text-2xl absolute left-[10px]"></i>
+    <i class="fas fa-star text-3xl absolute left-[50px] top-[100px]"></i>
+    <i class="fas fa-star text-4xl absolute left-[80px] top-[50px]"></i>
+    <i class="fas fa-star text-2xl absolute left-[150px]"></i>
+    <i class="fas fa-star text-3xl absolute left-[120px] top-[100px]"></i>
+  </footer>
 </template>
 
 <script setup>
