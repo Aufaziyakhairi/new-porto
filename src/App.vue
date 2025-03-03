@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full h-[100vh]">
+  <header class="w-full h-[100vh]" id="home">
     <transition enter-active-class="transition transform duration-5000 ease-out" enter-from-class="opacity-0"
       enter-to-class="opacity-100">
       <div v-if="show"
@@ -30,14 +30,14 @@
       <h1 class="text-2xl font-bold">Developer</h1>
       <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit, repellat.</p>
     </div>
-    <a href="" class="z-[100]">
+    <a href="#project" class="z-[100]">
       <i
         class="fas fa-chevron-down absolute left-[50%] text-3xl bottom-0 animate-bounce duration-700 hover:text-gray-400"></i>
     </a>
   </header>
   <NavigationBar />
   <main>
-    <section class="w-full h-[100vh]">
+    <section class="w-full h-[100vh]" id="project">
       <Swiper class=" w-full h-[100vh] mySwiper" :modules="modules" :direction="'vertical'" :autoplay="{ delay: 1500 }"
         :pagination="{ clickable: true, dynamicBullets: true }" :loop="true">
         <SwiperSlide class="w-full h-[100vh] relative overflow-clip">
@@ -62,8 +62,9 @@
         </SwiperSlide>
       </Swiper>
     </section>
-    <section class="w-full h-[100vh] flex flex-wrap items-center p-[100px] relative ">
-      <div class=" col-start-1 col-end-1 row-start-1 row-end-1 w-[30%] border-[1px] p-[50px] skew-y-[10deg] h-[44%] bg-gray-300">
+    <section class="w-full h-[100vh] flex flex-wrap items-center p-[100px] relative " id="about">
+      <div
+        class=" col-start-1 col-end-1 row-start-1 row-end-1 w-[30%] border-[1px] p-[50px] skew-y-[10deg] h-[44%] bg-gray-300">
         <img src="./assets/Logo.svg" alt="" class="w-[50%] mx-auto">
       </div>
       <div class=" col-start-2 col-end-3 w-[70%] border-[1px] p-[55px] skew-y-[-4deg] h-[44%] shadow-2xl bg-white">
@@ -77,7 +78,8 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti deserunt maiores optio magni, perferendis
           iure sunt? Ad, fuga consectetur mollitia iusto omnis neque delectus sint, eum pariatur, vero nihil iure.</p>
       </div>
-      <div class=" bg-white w-[30%] border-[1px] p-[10px] flex flex-wrap justify-around items-center h-[44%] transform skew-y-[-10deg] shadow-2xl">
+      <div
+        class=" bg-white w-[30%] border-[1px] p-[10px] flex flex-wrap justify-around items-center h-[44%] transform skew-y-[-10deg] shadow-2xl">
         <i class="fas fa-brands fa-sass text-3xl"></i>
         <i class="fas fa-brands fa-sass text-3xl"></i>
         <i class="fas fa-brands fa-sass text-3xl"></i>
@@ -90,14 +92,19 @@
       <span class=" absolute border-[1px] h-[500px] w-[100px] top-0 right-0 z-[-100]"></span>
       <span class=" absolute border-[1px] h-[100px] w-[1000px] bottom-0 right-0 z-[-100]"></span>
     </section>
-    <section class="w-full h-[100vh] flex flex-wrap items-center p-[100px]">
+    <section class="w-full flex flex-wrap items-center p-[100px] gap-[10px]" id="contact">
       <h1 class="text-5xl font-bold text-center w-full">Contact</h1>
-      <form action="" class="grid w-[50%] mx-auto gap-[10px]">
-        <input type="text" placeholder="Name" class=" col-start-1 col-end-1 row-start-1 row-end-1 p-[10px] border-[1px]">
-        <input type="email" placeholder="Email" class=" p-[10px] border-[1px] col-start-1 col-end-1 row-start-2 row-end-2">
-        <textarea name="" id="" cols="30" rows="10" placeholder="Message"
-          class=" p-[10px] border-[1px] col-start-2 col-end-2 row-start-1 row-end-3"></textarea>
-        <button class="w-[100%] p-[10px] bg-black text-white col-start-1 col-end-3 mx-auto hover:bg-white hover:text-black border-[1px] duration-700">Send</button>
+      <form @submit.prevent="sendEmail" class="grid w-[50%] mx-auto gap-[10px]">
+        <input v-model="form.name" type="text" placeholder="Name" required
+          class="col-start-1 col-end-1 row-start-1 row-end-1 p-[10px] border-[1px]" />
+        <input v-model="form.email" type="email" placeholder="Email" required
+          class="p-[10px] border-[1px] col-start-1 col-end-1 row-start-2 row-end-2" />
+        <textarea v-model="form.message" placeholder="Message" required
+          class="p-[10px] border-[1px] col-start-2 col-end-2 row-start-1 row-end-3"></textarea>
+        <button type="submit"
+          class="w-[100%] p-[10px] bg-black text-white col-start-1 col-end-3 mx-auto hover:bg-white hover:text-black border-[1px] duration-700">
+          Send
+        </button>
       </form>
     </section>
   </main>
@@ -132,8 +139,35 @@ import { Autoplay, Pagination } from 'swiper/modules';
 
 const modules = [Pagination, Autoplay,];
 const show = ref(false);
+import emailjs from "@emailjs/browser";
 
+// Data form
+const form = ref({
+  name: "",
+  email: "",
+  message: "",
+});
 
+// Fungsi untuk mengirim email
+const sendEmail = async () => {
+  try {
+    await emailjs.send(
+      "service_huo41o8", // Ganti dengan Service ID dari EmailJS
+      "template_jc83iy4", // Ganti dengan Template ID dari EmailJS
+      form.value,
+      "RJS2vCsEDYS6pSz5r" // Ganti dengan Public Key dari EmailJS
+    );
+    alert("Email berhasil dikirim!");
+
+    // Reset form setelah sukses mengirim
+    form.value.name = "";
+    form.value.email = "";
+    form.value.message = "";
+  } catch (error) {
+    console.error("Error sending email:", error);
+    alert("Gagal mengirim email.");
+  }
+};
 onMounted(() => {
   show.value = true; // Elemen akan muncul otomatis setelah halaman dimuat
 });
